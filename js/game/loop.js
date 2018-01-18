@@ -49,6 +49,12 @@ var Menu = function(){
 			// start
 			game.setLoop('GoToGame');
 		}
+
+		if(touch.isPress()){
+			if(touch.isInObject(MenuDescription)){
+				game.setLoop('GoToGame');
+			}
+		}
 	}
 
 	this.exit = function(){
@@ -224,7 +230,7 @@ var Crash = function(){
 			alpha = alpha - .01 * pjs.game.getDT(10);
 		}
 
-		if(keyboard.isPress('SPACE')){
+		if(keyboard.isPress('SPACE') || touch.isPress()){
 			game.setLoop('Menu');
 		}
 	}
