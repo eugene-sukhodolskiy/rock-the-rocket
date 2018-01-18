@@ -125,6 +125,10 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <!-- <uses-permission android:name="android.permission.CAMERA"/> -->
+        </config-file>
+    </platform>
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
