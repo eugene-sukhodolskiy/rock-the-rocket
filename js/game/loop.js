@@ -161,7 +161,7 @@ var GameProcess = function(){
 		RocketObject.draw();
 		lines.draw();
 
-		if(keyboard.isPress('SPACE')){
+		if(keyboard.isPress('SPACE') || touch.isPress()){
 			// boost
 			RocketObject.startBoost();
 		}

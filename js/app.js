@@ -1,5 +1,5 @@
-var width = 400;
-var height = 700;
+var width = window.innerWidth;
+var height = window.innerHeight;
 
 var pjs = new PointJS(width, height, {backgroundColor : "black"});
 // pjs.modules.import('js/particles.js', function () {
