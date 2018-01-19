@@ -1,6 +1,10 @@
 var Menu = function(){
 
 	this.entry = function(){
+		BestScore.text = "Best: " + game.bestScore;
+		BestScore.draw();
+		BestScore.x = WH.w / 2 - BestScore.w / 3;
+		BestScore.setAlpha(1);
 
 		EarthObject.rotate(p(10,0));
 		EarthObject.startPos();
@@ -42,6 +46,7 @@ var Menu = function(){
 		RocketObject.draw();
 		GameName.draw();
 		MenuDescription.draw();
+		BestScore.draw();
 
 		iconsDraw();
 
@@ -50,10 +55,8 @@ var Menu = function(){
 			game.setLoop('GoToGame');
 		}
 
-		if(touch.isPress()){
-			if(touch.isInObject(MenuDescription)){
-				game.setLoop('GoToGame');
-			}
+		if(touch.isPress() && !clickOnBtn){
+			game.setLoop('GoToGame');
 		}
 	}
 
@@ -107,6 +110,8 @@ var GoToGame = function(){
 		MenuDescription.draw();
 		GameName.setAlpha(alpha);
 		MenuDescription.setAlpha(alpha);
+		BestScore.draw();
+		BestScore.setAlpha(alpha);
 		if(alpha < 0.5){
 			backgroundGradient2.setAlpha(alpha);
 		}
@@ -215,6 +220,11 @@ var Crash = function(){
 		ScoreText.text = 'Result: ' + game.score;
 		RocketObject.fireHidden();
 		RocketObject.fireBoostHidden();
+
+		if(game.bestScore < game.score){
+			game.bestScore = game.score;
+			localStorage.setItem('bestScore', game.score);
+		}
 	}
 
 	this.update = function(){

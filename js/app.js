@@ -14,6 +14,9 @@ var mouse = pjs.mouseControl.initControl();
 
 game.setFPS(30);
 
+var bestScore = localStorage.getItem('bestScore');
+game.bestScore = (typeof bestScore == 'object') ? -1 : parseInt(bestScore);
+
 // init
 var WH = game.getWH();
 var screen = WH;
@@ -73,6 +76,13 @@ var MenuDescription = game.newTextObject({
 	font: 'Arial Black'
 });
 
+var BestScore = game.newTextObject({
+	size: WH.w / 15,
+	y: WH.h / 2,
+	font: 'Arial Black',
+	color: 'white'
+});
+
 var backgroundGradient = new GradientBackground(pjs, {
 	colorTo: 'blue',
 	height: WH.h
@@ -128,6 +138,7 @@ var MusicUnMuteBtn = game.newImageObject({
 });
 MusicUnMuteBtn.setPosition(musicBtnPos);
 
+var clickOnBtns = false;
 var iconsDraw = function(){
 	if(!option.soundMute){
 		SoundUnMuteBtn.draw();
@@ -148,6 +159,7 @@ var iconsDraw = function(){
 			else{
 				option.set('soundMute', true);
 			}
+			clickOnBtns = true;
 		}
 
 		if(touch.isInObject(MusicMuteBtn) || mouse.isInObject(MusicMuteBtn)){
@@ -159,8 +171,9 @@ var iconsDraw = function(){
 				option.set('musicMute', true);
 				BackgroundAudio.stop();
 			}
+			clickOnBtns = true;
 		}
-
+		clickOnBtns = false;
 	}
 
 }
