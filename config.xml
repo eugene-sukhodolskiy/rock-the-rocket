@@ -124,8 +124,8 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <preference name="android-manifest/application/@android:hardwareAccelerated" value="true" />
-        <preference name="android-manifest/@android:hardwareAccelerated" value="true" />
+        <custom-preference name="android-manifest/application/@android:hardwareAccelerated" value="true" />
+        <custom-preference name="android-manifest/@android:hardwareAccelerated" value="true" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
