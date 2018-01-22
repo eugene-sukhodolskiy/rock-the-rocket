@@ -65,8 +65,6 @@ var stars = new Stars(pjs, {
 	type: 'square'
 });
 
-stars.moving();
-
 game.score = 0;
 
 var GameName = game.newTextObject({
@@ -116,8 +114,6 @@ lines.glassDestroyEvent(function(){
 	}
 });
 
-lines.moving();
-lines.pause();
 
 var option = new Option();
 
