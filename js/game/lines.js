@@ -12,6 +12,9 @@ var Lines = function(pjs, params){
 	var self = this;
 	this.pauseFlag = false;
 	this.debris = [];
+	this.xmove = false;
+	this.way = 0;
+	this.currentWay = 0;
 
 	this.generateLine = function(y){
 		var lineParam = {
@@ -118,13 +121,16 @@ var Lines = function(pjs, params){
 			self.lines[i].glass.draw();
 
 			if(!self.pauseFlag){
+				var speedV = self.xmove === false ? self.speedV : self.speedV * self.xmove;
 				self.lines[i].spaceMove(self.speedH);
-				self.lines[i].vertMove(self.speedV);
+				self.lines[i].vertMove(speedV);
 			}
 			if(self.lines[i].ifDownDisplay()){
 				self.lines.splice(i, 1);
 			}
 		}
+
+		self.monitorBoost();
 	}
 
 	this.isIntersect = function(obj, callback){
@@ -141,6 +147,26 @@ var Lines = function(pjs, params){
 				self.glassDestroy(i, self.lines[i].glass);
 			}
 		}
+	}
+
+	this.startBoost = function(x, way){
+		self.xmove = x;
+		self.way = way;
+		self.currentWay = 0;
+	}
+
+	this.monitorBoost = function(){
+		if(self.xmove === false) return ;
+
+		self.currentWay += self.speedV * self.xmove;
+		if(self.currentWay > self.way){
+			self.stopBoost();
+		}
+	}
+
+	this.stopBoost = function(){
+		self.xmove = false;
+		//self.way = 0;
 	}
 
 	this.pause = function(){

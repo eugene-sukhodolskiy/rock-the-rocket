@@ -1,4 +1,4 @@
-var Rocket = function(pjs, speed){
+var Rocket = function(pjs, speed, alterSpeed){
 	var self = this;
 	this.screen = pjs.game.getWH();
 	this.obj = {};
@@ -6,6 +6,7 @@ var Rocket = function(pjs, speed){
 	this.moveUpMax = this.screen.h / 2.7;
 	this.boostNowFlag = false;
 	this.speed = speed;
+	this.originalSpeed = speed;
 	this.loadFlag = false;
 	this.createFlag = false;
 	this.EarthObjectY = 1;
@@ -15,6 +16,8 @@ var Rocket = function(pjs, speed){
 	this.fireBoostObject;
 	this.fireBoostVisible = false;
 	this.firePulseSpeed = .2;
+	this.alterBoost = false;
+	this.alterSpeed = alterSpeed;
 
 	this.create = function(EarthObjectY){
 		self.EarthObjectY = EarthObjectY;
@@ -61,7 +64,7 @@ var Rocket = function(pjs, speed){
 
 	
 	this.boost = function(){
-		if(!self.boostNowFlag) return;
+		if(!self.boostNowFlag && !self.alterBoost) return;
 
 		if(self.moveUpFlag){
 			self.moveUp();
@@ -69,13 +72,14 @@ var Rocket = function(pjs, speed){
 			self.moveDown();
 		}		
 
-		if(self.obj.y <= self.obj.staticY - self.moveUpMax){
+		if(self.obj.y <= (self.obj.staticY - self.moveUpMax) && !self.alterBoost){
 			self.moveUpFlag = false;
 		}
 
 		if(self.obj.y > self.obj.staticY){
 			self.obj.y = self.obj.staticY;
 			self.boostNowFlag = false;
+			self.speed = self.originalSpeed;
 		}
 	}
 
@@ -84,7 +88,8 @@ var Rocket = function(pjs, speed){
 	}
 
 	this.moveDown = function(){
-		self.obj.y += self.speed / 15;
+		// self.obj.y += self.speed / 10;
+		self.obj.y += lines.speedV;
 		stars.changeSpeed(1);
 		self.fireBoostHidden();
 	}
@@ -94,6 +99,28 @@ var Rocket = function(pjs, speed){
 		self.boostNowFlag = true;
 		stars.changeSpeed(4);
 		self.fireBoostShow();
+	}
+
+	this.boostAlternative = function(minY){
+		self.speed = self.alterSpeed;
+
+		if(self.obj.y > minY){
+			self.moveUpFlag = true;
+			self.alterBoost = true;
+			if(stars.getCurrentSpeed() != 3){
+				stars.changeSpeed(3);
+			}
+		}
+
+		self.fireBoostShow();
+	}
+
+	this.stopBoostAlternative = function(){
+		self.moveUpFlag = false;
+		self.alterBoost = false;
+		self.boostNowFlag = true;
+
+		// console.log('stopBoostAlternative');
 	}
 
 	this.draw = function(){

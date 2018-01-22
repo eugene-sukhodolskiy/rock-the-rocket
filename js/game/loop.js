@@ -34,6 +34,8 @@ var Menu = function(){
 			BackgroundAudio.play();
 		}
 
+		RocketObject.stopBoostAlternative();
+
 	}
 
 	this.update = function(){
@@ -171,9 +173,20 @@ var GameProcess = function(){
 		RocketObject.draw();
 		lines.draw();
 
-		if(keyboard.isPress('SPACE') || touch.isPress()){
+		//if(keyboard.isPress('SPACE') || touch.isPress() || mouse.isPress("LEFT")){
 			// boost
-			RocketObject.startBoost();
+			//RocketObject.startBoost();
+			// lines.startBoost(3, WH.h / 10);
+		//}
+
+		if(keyboard.isDown('SPACE') || touch.isDown() || mouse.isDown("LEFT")){
+			// boost
+			RocketObject.boostAlternative(0);
+		}
+
+		if(keyboard.isUp('SPACE') || touch.isUp() || mouse.isUp("LEFT")){
+			// stop boost
+			RocketObject.stopBoostAlternative();
 		}
 
 		lines.isIntersect(RocketObject.getObject(), function(){
@@ -230,6 +243,8 @@ var Crash = function(){
 			game.bestScore = game.score;
 			localStorage.setItem('bestScore', game.score);
 		}
+
+		RocketObject.stopBoostAlternative();
 	}
 
 	this.update = function(){
@@ -245,7 +260,7 @@ var Crash = function(){
 			alpha = alpha - .01 * pjs.game.getDT(10);
 		}
 
-		if(keyboard.isPress('SPACE') || touch.isPress()){
+		if(keyboard.isPress('SPACE') || touch.isPress() || mouse.isPress("LEFT")){
 			game.setLoop('Menu');
 		}
 	}
