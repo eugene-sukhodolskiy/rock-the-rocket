@@ -57,7 +57,7 @@ var Menu = function(){
 			game.setLoop('GoToGame');
 		}
 
-		if(touch.isPress() && !clickOnBtn){
+		if((touch.isPress() || mouse.isPress('LEFT')) && !clickOnBtns){
 			game.setLoop('GoToGame');
 		}
 	}

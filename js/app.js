@@ -158,6 +158,8 @@ var iconsDraw = function(){
 
 	if(touch.isPress() || mouse.isPress('LEFT')){
 
+		clickOnBtns = false;
+
 		if(touch.isInObject(SoundMuteBtn) || mouse.isInObject(SoundMuteBtn)){
 			if(option.soundMute)
 				option.set('soundMute', false);
@@ -178,7 +180,7 @@ var iconsDraw = function(){
 			}
 			clickOnBtns = true;
 		}
-		clickOnBtns = false;
+		
 	}
 
 }
