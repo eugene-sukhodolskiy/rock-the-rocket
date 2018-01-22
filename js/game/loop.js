@@ -159,6 +159,7 @@ var GameProcess = function(){
 		stars.changeSpeed(1);
 		RocketObject.fireShow();
 		RocketObject.fireBoostHidden();
+		lines.play();
 
 	}
 

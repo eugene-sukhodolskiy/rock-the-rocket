@@ -65,6 +65,8 @@ var stars = new Stars(pjs, {
 	type: 'square'
 });
 
+stars.moving();
+
 game.score = 0;
 
 var GameName = game.newTextObject({
@@ -104,8 +106,8 @@ var backgroundGradient2 = new GradientBackground(pjs, {
 var RocketObject = new Rocket(pjs, 8);
 
 var lines = new Lines(pjs, {
-	speedH: 6,
-	speedV: 3
+	speedH: 2,
+	speedV: 1
 });
 
 lines.glassDestroyEvent(function(){
@@ -113,6 +115,9 @@ lines.glassDestroyEvent(function(){
 		Glasses[pjs.math.random(0, Glasses.length - 1)].play();
 	}
 });
+
+lines.moving();
+lines.pause();
 
 var option = new Option();
 

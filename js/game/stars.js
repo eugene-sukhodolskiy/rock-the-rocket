@@ -89,10 +89,21 @@ var Stars = function(pjs, params){
         }
 
         self.pjs.OOP.drawArr(self.stars);
-        if(!self.pauseFlag){
-            self.clearAndGenerate();
-            self.move();
-        }
+        // if(!self.pauseFlag){
+        //     self.clearAndGenerate();
+        //     self.move();
+        // }
+
+    }
+
+    this.moving = function(){
+        setInterval(function(){
+            if(!self.pauseFlag){
+                self.clearAndGenerate();
+                self.move();
+            }
+        }, self.pjs.game.getDT(10));
+        
     }
 
     this.pause = function(){

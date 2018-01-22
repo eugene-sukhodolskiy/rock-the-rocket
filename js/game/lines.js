@@ -117,14 +117,26 @@ var Lines = function(pjs, params){
 			self.lines[i].line2.draw();
 			self.lines[i].glass.draw();
 
-			if(!self.pauseFlag){
-				self.lines[i].spaceMove(self.speedH);
-				self.lines[i].vertMove(self.speedV);
-			}
+			// if(!self.pauseFlag){
+			// 	self.lines[i].spaceMove(self.speedH);
+			// 	self.lines[i].vertMove(self.speedV);
+			// }
 			if(self.lines[i].ifDownDisplay()){
 				self.lines.splice(i, 1);
 			}
 		}
+	}
+
+	this.moving = function(){
+		setInterval(function(){
+			for(var i in self.lines){
+				if(!self.pauseFlag){
+					self.lines[i].spaceMove(self.speedH);
+					self.lines[i].vertMove(self.speedV);
+				}
+			}
+		}, self.pjs.game.getDT(10));
+		
 	}
 
 	this.isIntersect = function(obj, callback){
