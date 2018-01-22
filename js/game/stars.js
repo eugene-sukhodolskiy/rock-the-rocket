@@ -31,7 +31,7 @@ var Stars = function(pjs, params){
             });
 
         }else if(self.type == 1){
-            var size = self.pjs.math.random(1,3);
+            var size = self.pjs.math.random(self.screen.w / 90, self.screen.w / 320);
 
             var obj = self.pjs.game.newRectObject({
                 positionC: pos,

@@ -1,5 +1,10 @@
-var width = window.screen.width;
-var height = window.screen.height;
+if(window.screen.width < window.screen.height){
+	var width = window.screen.width;
+	var height = window.screen.height;
+}else{
+	var width = window.innerWidth;
+	var height = window.innerHeight;
+}
 
 var pjs = new PointJS(width, height, {backgroundColor : "black"});
 // pjs.modules.import('js/particles.js', function () {
