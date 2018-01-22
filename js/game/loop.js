@@ -46,7 +46,9 @@ var Menu = function(){
 		RocketObject.draw();
 		GameName.draw();
 		MenuDescription.draw();
-		BestScore.draw();
+		if(game.bestScore > 0){
+			BestScore.draw();
+		}
 
 		iconsDraw();
 
@@ -110,8 +112,10 @@ var GoToGame = function(){
 		MenuDescription.draw();
 		GameName.setAlpha(alpha);
 		MenuDescription.setAlpha(alpha);
-		BestScore.draw();
-		BestScore.setAlpha(alpha);
+		if(game.bestScore > 0){
+			BestScore.draw();
+			BestScore.setAlpha(alpha);
+		}
 		if(alpha < 0.5){
 			backgroundGradient2.setAlpha(alpha);
 		}
