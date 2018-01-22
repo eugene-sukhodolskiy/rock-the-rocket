@@ -103,6 +103,9 @@
     <string>100</string>
     </gap:config-file>
 
+    <gap:config-file platform="android" hardwareAccelerated="true">
+        
+    </gap:config-file>
     <!--
         Define access to external domains.
         <access />            - a blank access tag denies access to all external resources.
@@ -125,7 +128,6 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <application android:hardwareAccelerated="true" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
