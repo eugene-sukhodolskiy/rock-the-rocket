@@ -125,6 +125,7 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <application android:hardwareAccelerated="true" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
