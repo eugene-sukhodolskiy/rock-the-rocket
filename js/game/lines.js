@@ -122,8 +122,8 @@ var Lines = function(pjs, params){
 
 			if(!self.pauseFlag){
 				var speedV = self.xmove === false ? self.speedV : self.speedV * self.xmove;
-				self.lines[i].spaceMove(self.speedH);
-				self.lines[i].vertMove(speedV);
+				self.lines[i].spaceMove(self.speedH * self.pjs.game.getDT(10));
+				self.lines[i].vertMove(speedV * self.pjs.game.getDT(10));
 			}
 			if(self.lines[i].ifDownDisplay()){
 				self.lines.splice(i, 1);

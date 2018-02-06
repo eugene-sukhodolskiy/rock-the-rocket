@@ -7,6 +7,10 @@ if(window.screen.width < window.screen.height){
 }
 
 var pjs = new PointJS(width, height, {backgroundColor : "black"});
+	
+if(window.screen.width < window.screen.height){
+	pjs.system.initFullScreen();
+}
 // pjs.modules.import('js/particles.js', function () {
 // 	pjs.particles.setLimit(200);
 // });
@@ -104,8 +108,8 @@ var backgroundGradient2 = new GradientBackground(pjs, {
 var RocketObject = new Rocket(pjs, 8, 32);
 
 var lines = new Lines(pjs, {
-	speedH: 6,
-	speedV: 3
+	speedH: 5,
+	speedV: 2.5
 });
 
 lines.glassDestroyEvent(function(){
