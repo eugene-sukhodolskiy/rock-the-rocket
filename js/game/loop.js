@@ -199,6 +199,10 @@ var GameProcess = function(){
 			game.score++;
 		});
 
+		if(RocketObject.obj.y < -400){
+			game.setLoop('Crash');
+		}
+
 		ScoreText.text = ''+game.score;
 		ScoreText.draw();
 		drawFPS();
