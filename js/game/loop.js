@@ -40,7 +40,7 @@ var Menu = function(){
 
 	this.update = function(){
 		// background
-		stars.draw();
+		// stars.draw();
 		backgroundGradient.draw();
 		backgroundGradient2.draw();
 
@@ -103,8 +103,8 @@ var GoToGame = function(){
 
 	this.update = function(){
 		// background
-		stars.draw();
-		stars.changeSpeed(starsSpeed + .05);
+		// stars.draw();
+		// stars.changeSpeed(starsSpeed + .05);
 		backgroundGradient.draw();
 		backgroundGradient2.draw();
 
@@ -169,7 +169,7 @@ var GameProcess = function(){
 
 	this.update = function(){
 		// background
-		stars.draw();
+		// stars.draw();
 		backgroundGradient.draw();
 
 		RocketObject.draw();
@@ -251,7 +251,7 @@ var Crash = function(){
 	}
 
 	this.update = function(){
-		stars.draw();
+		// stars.draw();
 		backgroundGradient.draw();
 		RocketObject.draw();
 		lines.draw();
