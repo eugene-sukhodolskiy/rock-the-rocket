@@ -108,8 +108,8 @@ var backgroundGradient2 = new GradientBackground(pjs, {
 var RocketObject = new Rocket(pjs, 8, 32);
 
 var lines = new Lines(pjs, {
-	speedH: 5,
-	speedV: 2.5
+	speedH: 2.5,
+	speedV: .8
 });
 
 lines.glassDestroyEvent(function(){

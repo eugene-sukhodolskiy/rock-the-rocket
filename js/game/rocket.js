@@ -84,12 +84,12 @@ var Rocket = function(pjs, speed, alterSpeed){
 	}
 
 	this.moveUp = function(){
-		self.obj.y -= self.speed;
+		self.obj.y -= self.speed / 1.4 * pjs.game.getDT(10);
 	}
 
 	this.moveDown = function(){
-		// self.obj.y += self.speed / 10;
-		self.obj.y += lines.speedV;
+		self.obj.y += self.speed / 25 * pjs.game.getDT(10);
+		// self.obj.y += lines.speedV;
 		stars.changeSpeed(1);
 		self.fireBoostHidden();
 	}

@@ -67,15 +67,15 @@ var Lines = function(pjs, params){
 					speed = 0 - speed;
 				}
 
-				this.space.x += speed;
+				this.space.x += speed * self.pjs.game.getDT(10);
 
 				this.set();
 			},
 
 			'vertMove': function(speed){
-				this.line1.y += speed;
-				this.line2.y += speed;
-				this.glass.y += speed;
+				this.line1.y += speed * self.pjs.game.getDT(10);
+				this.line2.y += speed * self.pjs.game.getDT(10);
+				this.glass.y += speed * self.pjs.game.getDT(10);
 			},
 
 			'ifDownDisplay': function(){
@@ -102,9 +102,9 @@ var Lines = function(pjs, params){
 	     shadowY : 0 
 	   }
 
-		obj.line1.setShadow(mainShadow);
-		obj.line2.setShadow(mainShadow);
-		obj.glass.setShadow(glassShadow);
+		// obj.line1.setShadow(mainShadow);
+		// obj.line2.setShadow(mainShadow);
+		// obj.glass.setShadow(glassShadow);
 
 		self.lines.push(obj);
 	}
