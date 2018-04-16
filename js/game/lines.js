@@ -67,15 +67,15 @@ var Lines = function(pjs, params){
 					speed = 0 - speed;
 				}
 
-				this.space.x += speed * self.pjs.game.getDT(10);
+				this.space.x += speed;
 
 				this.set();
 			},
 
 			'vertMove': function(speed){
-				this.line1.y += speed * self.pjs.game.getDT(10);
-				this.line2.y += speed * self.pjs.game.getDT(10);
-				this.glass.y += speed * self.pjs.game.getDT(10);
+				this.line1.y += speed;
+				this.line2.y += speed;
+				this.glass.y += speed;
 			},
 
 			'ifDownDisplay': function(){
