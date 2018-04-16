@@ -62,6 +62,8 @@ var Menu = function(){
 		if((touch.isPress() || mouse.isPress('LEFT')) && !clickOnBtns){
 			game.setLoop('GoToGame');
 		}
+
+		drawFPS();
 	}
 
 	this.exit = function(){
@@ -199,6 +201,7 @@ var GameProcess = function(){
 
 		ScoreText.text = ''+game.score;
 		ScoreText.draw();
+		drawFPS();
 	}
 }
 

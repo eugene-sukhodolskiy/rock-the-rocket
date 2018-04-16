@@ -7,6 +7,7 @@ if(window.screen.width < window.screen.height){
 }
 
 var pjs = new PointJS(width, height, {backgroundColor : "black"});
+pjs.system.initFPSCheck();
 	
 if(window.screen.width < window.screen.height){
 	pjs.system.initFullScreen();
@@ -220,3 +221,11 @@ var iconsDraw = function(){
 
 
 
+function drawFPS(){
+	pjs.brush.drawText({
+		 text : "" + pjs.system.getFPS(), 
+		  x : 20, y : 20, 
+		  color : "white",
+		  size: WH.w / 20
+	});
+}
