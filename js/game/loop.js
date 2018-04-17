@@ -40,9 +40,9 @@ var Menu = function(){
 
 	this.update = function(){
 		// background
-		// stars.draw();
-		// backgroundGradient.draw();
-		// backgroundGradient2.draw();
+		stars.draw();
+		backgroundGradient.draw();
+		backgroundGradient2.draw();
 
 		EarthObject.draw();
 		RocketObject.draw();
@@ -103,10 +103,10 @@ var GoToGame = function(){
 
 	this.update = function(){
 		// background
-		// stars.draw();
-		// stars.changeSpeed(starsSpeed + .05);
-		// backgroundGradient.draw();
-		// backgroundGradient2.draw();
+		stars.draw();
+		stars.changeSpeed(starsSpeed + .05);
+		backgroundGradient.draw();
+		backgroundGradient2.draw();
 
 		EarthObject.draw();
 		EarthObject.moveDown(.5 * pjs.game.getDT(10));
@@ -169,8 +169,8 @@ var GameProcess = function(){
 
 	this.update = function(){
 		// background
-		// stars.draw();
-		// backgroundGradient.draw();
+		stars.draw();
+		backgroundGradient.draw();
 
 		RocketObject.draw();
 		lines.draw();
@@ -255,8 +255,8 @@ var Crash = function(){
 	}
 
 	this.update = function(){
-		// stars.draw();
-		// backgroundGradient.draw();
+		stars.draw();
+		backgroundGradient.draw();
 		RocketObject.draw();
 		lines.draw();
 		ScoreText.draw();
