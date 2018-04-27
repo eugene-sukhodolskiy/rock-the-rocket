@@ -84,20 +84,20 @@ var Rocket = function(pjs, speed, alterSpeed){
 	}
 
 	this.moveUp = function(){
-		self.obj.y -= self.speed / 1;
+		self.obj.y -= self.speed / .5;
 	}
 
 	this.moveDown = function(){
-		self.obj.y += self.speed / 12;
+		self.obj.y += self.speed / 6;
 		// self.obj.y += lines.speedV;
-		stars.changeSpeed(1);
+		stars.changeSpeed(1 * scaleKoef);
 		self.fireBoostHidden();
 	}
 
 	this.startBoost = function(){
 		self.moveUpFlag = true;
 		self.boostNowFlag = true;
-		stars.changeSpeed(4);
+		stars.changeSpeed(4 * scaleKoef);
 		self.fireBoostShow();
 	}
 
@@ -135,7 +135,7 @@ var Rocket = function(pjs, speed, alterSpeed){
 
 	this.fire = function(){
 		self.fireObject.setPositionC(pjs.vector.point((self.obj.x + self.obj.w / 2) - self.fireObject.strokeWidth / 2, self.obj.y + self.obj.h + self.fireObject.strokeWidth));
-		self.firePulse(self.firePulseSpeed, self.fireRadius * 1.5);
+		self.firePulse(self.firePulseSpeed * scaleKoef, self.fireRadius * 1.5);
 		if(self.fireBoostVisible){
 			self.fireBoost();
 		}

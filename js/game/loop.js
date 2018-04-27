@@ -30,9 +30,9 @@ var Menu = function(){
 		RocketObject.fireBoostHidden();
 
 		backgroundGradient2.setAlpha(.5);
-		if(!option.musicMute){
-			BackgroundAudio.play();
-		}
+		// if(!option.musicMute){
+		// 	BackgroundAudio.play();
+		// }
 
 		RocketObject.stopBoostAlternative();
 
@@ -63,7 +63,7 @@ var Menu = function(){
 			game.setLoop('GoToGame');
 		}
 
-		drawFPS();
+		// drawFPS();
 	}
 
 	this.exit = function(){
@@ -160,7 +160,7 @@ var GameProcess = function(){
 		ScoreText.x = WH.w - (WH.h / 40 + ScoreText.h + ScoreText.w);
 
 		RocketObject.setSpeed(45);
-		stars.changeSpeed(1);
+		stars.changeSpeed(1 * scaleKoef);
 		RocketObject.fireShow();
 		RocketObject.fireBoostHidden();
 		lines.play();
@@ -205,7 +205,7 @@ var GameProcess = function(){
 
 		ScoreText.text = ''+game.score;
 		ScoreText.draw();
-		drawFPS();
+		// drawFPS();
 	}
 }
 
@@ -249,6 +249,10 @@ var Crash = function(){
 		if(game.bestScore < game.score){
 			game.bestScore = game.score;
 			localStorage.setItem('bestScore', game.score);
+			social.submitScore( score, function(error){
+				if (error)
+		    		alert("submitScore error: " + error.message);
+			});
 		}
 
 		RocketObject.stopBoostAlternative();
